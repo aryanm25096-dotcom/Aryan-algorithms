@@ -1,6 +1,7 @@
+import LiquidBackground from "@/components/LiquidBackground";
+import "./globals.css";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,10 +33,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#0a0a0a] min-h-screen`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#0a0a0a] min-h-screen relative`}
       >
-        {/* Background grid pattern */}
-        <div className="fixed inset-0 grid-pattern pointer-events-none opacity-50" />
+        <LiquidBackground />
 
         {/* Main content */}
         <div className="relative z-10">

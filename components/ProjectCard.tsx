@@ -46,8 +46,16 @@ export default function ProjectCard({ project, index, onClick }: ProjectCardProp
             transition={{ duration: 0.4, delay: index * 0.05 }}
             whileHover={!isUpcoming ? { y: -4, scale: 1.02 } : {}}
             onClick={!isUpcoming ? onClick : undefined}
+            role={!isUpcoming ? "button" : undefined}
+            tabIndex={!isUpcoming ? 0 : -1}
+            onKeyDown={(e) => {
+                if (!isUpcoming && (e.key === 'Enter' || e.key === ' ')) {
+                    e.preventDefault();
+                    onClick();
+                }
+            }}
             className={`
-        relative group rounded-2xl overflow-hidden
+        relative group rounded-2xl overflow-hidden focus:outline-none focus:ring-2 focus:ring-emerald-500/50
         ${isUpcoming
                     ? 'bg-zinc-900/30 border border-zinc-800/50 cursor-not-allowed opacity-60'
                     : 'bg-zinc-900/50 border border-zinc-800 cursor-pointer hover:border-zinc-700'
@@ -85,22 +93,39 @@ export default function ProjectCard({ project, index, onClick }: ProjectCardProp
             <div className="relative p-6 pt-16">
                 {/* Image placeholder / gradient */}
                 <div className={`
-          h-32 rounded-xl mb-4 flex items-center justify-center
+          relative h-48 rounded-xl mb-4 overflow-hidden
           ${isUpcoming
-                        ? 'bg-zinc-800/30'
-                        : 'bg-gradient-to-br from-zinc-800 to-zinc-900'
+                        ? 'bg-zinc-800/30 flex items-center justify-center'
+                        : 'bg-zinc-900 group-hover:shadow-xl transition-all duration-500'
                     }
         `}>
-                    {isUpcoming ? (
-                        <Lock className="w-8 h-8 text-zinc-600" />
-                    ) : isInProgress ? (
-                        <div className="relative">
-                            <div className="w-12 h-12 rounded-full border-2 border-amber-500/30 border-t-amber-500 animate-spin" />
-                            <Clock className="absolute inset-0 m-auto w-5 h-5 text-amber-400" />
+                    {!isUpcoming && project.imageUrl ? (
+                        <div className="absolute inset-0">
+                            <img
+                                src={project.imageUrl}
+                                alt={project.title}
+                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/40 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300" />
                         </div>
+                    ) : isUpcoming ? (
+                        <Lock className="w-8 h-8 text-zinc-600" />
                     ) : (
-                        <div className="text-4xl font-bold text-zinc-700 font-mono">
-                            #{project.weekNumber.toString().padStart(2, '0')}
+                        <div className="flex h-full items-center justify-center bg-gradient-to-br from-zinc-800 to-zinc-900">
+                            <div className="text-4xl font-bold text-zinc-700 font-mono">
+                                #{project.weekNumber.toString().padStart(2, '0')}
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Status overlay for In Progress/Completed */}
+                    {!isUpcoming && (
+                        <div className="absolute top-2 right-2 z-10 flex gap-2">
+                            {isInProgress && (
+                                <div className="bg-amber-500/20 backdrop-blur-md border border-amber-500/20 p-1.5 rounded-lg">
+                                    <Clock className="w-4 h-4 text-amber-400 animate-pulse" />
+                                </div>
+                            )}
                         </div>
                     )}
                 </div>

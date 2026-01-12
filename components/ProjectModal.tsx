@@ -46,9 +46,24 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
                                 <X className="w-5 h-5 text-zinc-400" />
                             </button>
 
-                            {/* Header gradient */}
-                            <div className="h-40 bg-gradient-to-br from-emerald-500/20 via-zinc-900 to-cyan-500/20 flex items-center justify-center">
-                                <div className="text-6xl font-bold text-zinc-700/50 font-mono">
+                            {/* Header gradient / Image */}
+                            <div className="relative h-64 bg-zinc-900 flex items-center justify-center overflow-hidden">
+                                {project.imageUrl ? (
+                                    <>
+                                        <div className="absolute inset-0">
+                                            <img
+                                                src={project.imageUrl}
+                                                alt={project.title}
+                                                className="w-full h-full object-cover"
+                                            />
+                                            <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/60 to-transparent" />
+                                        </div>
+                                    </>
+                                ) : (
+                                    <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/20 via-zinc-900 to-cyan-500/20" />
+                                )}
+
+                                <div className="relative z-10 text-6xl font-bold text-white/10 font-mono tracking-widest scale-150 select-none">
                                     #{project.weekNumber.toString().padStart(2, '0')}
                                 </div>
                             </div>

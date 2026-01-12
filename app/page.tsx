@@ -2,11 +2,12 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Github, Twitter, Linkedin, Mail, Heart } from 'lucide-react';
 import HeroSection from '@/components/HeroSection';
 import ProgressBar from '@/components/ProgressBar';
 import ProjectCard from '@/components/ProjectCard';
 import ProjectModal from '@/components/ProjectModal';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 import { projects, type Project } from '@/data/projects';
 
 export default function Home() {
@@ -27,35 +28,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen">
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-40 backdrop-blur-md bg-[#0a0a0a]/80 border-b border-zinc-800/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center gap-2">
-              <span className="text-xl font-bold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
-                Aryan
-              </span>
-              <span className="text-xl font-light text-zinc-400">Algorithms</span>
-            </div>
-
-            <nav className="hidden md:flex items-center gap-8">
-              <a href="#projects" className="text-base font-medium text-zinc-400 hover:text-white transition-colors">
-                Projects
-              </a>
-              <a href="https://github.com/aryan-algorithms" target="_blank" rel="noopener noreferrer" className="text-base font-medium text-zinc-400 hover:text-white transition-colors">
-                GitHub
-              </a>
-            </nav>
-
-            <a
-              href="mailto:aryan@example.com"
-              className="px-5 py-2.5 text-base font-medium bg-zinc-800 hover:bg-zinc-700 text-white rounded-full transition-colors"
-            >
-              Contact
-            </a>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       {/* Hero Section */}
       <section className="pt-24">
@@ -183,64 +156,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-12 px-4 border-t border-zinc-800/50">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="flex items-center gap-2">
-              <span className="text-lg font-bold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
-                Aryan
-              </span>
-              <span className="text-lg font-light text-zinc-500">Algorithms</span>
-            </div>
-
-            <div className="flex items-center gap-4">
-              <a
-                href="https://github.com/aryan-algorithms"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 text-zinc-500 hover:text-white transition-colors"
-              >
-                <Github className="w-5 h-5" />
-              </a>
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 text-zinc-500 hover:text-white transition-colors"
-              >
-                <Twitter className="w-5 h-5" />
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 text-zinc-500 hover:text-white transition-colors"
-              >
-                <Linkedin className="w-5 h-5" />
-              </a>
-              <a
-                href="mailto:aryan@example.com"
-                className="p-2 text-zinc-500 hover:text-white transition-colors"
-              >
-                <Mail className="w-5 h-5" />
-              </a>
-            </div>
-
-            <div className="flex items-center gap-1.5 text-sm text-zinc-500">
-              <span>Built with</span>
-              <Heart className="w-4 h-4 text-red-500" />
-              <span>in 2026</span>
-            </div>
-          </div>
-
-          <div className="mt-8 pt-6 border-t border-zinc-800/50 text-center">
-            <p className="text-sm text-zinc-600">
-              © 2026 Aryan Algorithms. 30 Weeks of Code Challenge.
-            </p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
 
       {/* Project Modal */}
       <ProjectModal
