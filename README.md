@@ -2,11 +2,6 @@
 
 <div align="center">
 
-![Next.js](https://img.shields.io/badge/Next.js-14-black?style=for-the-badge&logo=next.js)
-![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=for-the-badge&logo=typescript)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS-38B2AC?style=for-the-badge&logo=tailwind-css)
-![Framer Motion](https://img.shields.io/badge/Framer-Motion-purple?style=for-the-badge&logo=framer)
-
 **Building 30 projects in 30 weeks. Documenting my journey, one algorithm at a time.**
 
 [View Live Demo](https://aryan-algorithms.vercel.app) · [View Projects](#projects) · [Follow My Journey](#the-challenge)
